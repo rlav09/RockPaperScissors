@@ -15,7 +15,7 @@ public class Main {
             Scanner inp = new Scanner(System.in);
             print("Please enter your choice: ");
 
-            String userChoice = inp.next();
+            String userChoice = inp.nextLine();
 
             RPSGame rpsGame = new RPSGame();
 
