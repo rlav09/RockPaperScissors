@@ -23,7 +23,7 @@ public class Main {
 
             if (rpsGame.isChoice(userChoice)) {
                 GameResult gameResult = rpsGame.getResult(userChoice);
-                String toPrint = "";
+                String toPrint;
 
                 if (gameResult == GameResult.WIN) {
                     wins += 1;
@@ -31,13 +31,17 @@ public class Main {
                     toPrint = "Congratulations! You have won this round of Rock Paper Scissors, you selected " + userChoice + " while the Computer chose " + rpsGame.getGeneratedResult() + "!";
                     print("You have won " + wins + " rounds!");
                     print(" ");
-                } else if (gameResult == GameResult.DRAW) {
+                }
+
+                if (gameResult == GameResult.DRAW) {
                     draws += 1;
                     print(" ");
                     toPrint = "Draw! You have drawn this round of Rock Paper Scissors, you selected " + userChoice + " while the Computer also chose " + rpsGame.getGeneratedResult() + "!";
                     print("You have drawn " + draws + " rounds!");
                     print(" ");
-                } else if (gameResult == GameResult.LOSS) {
+                }
+
+                if (gameResult == GameResult.LOSS) {
                     losses += 1;
                     print(" ");
                     toPrint = "Better luck next time! You have lost this round of Rock Paper Scissors, you selected " + userChoice + " while the Computer chose " + rpsGame.getGeneratedResult() + "!";
@@ -49,7 +53,7 @@ public class Main {
                 print(toPrint);
             }
 
-            else if (userChoice.equalsIgnoreCase("stats")) {
+            if (userChoice.equalsIgnoreCase("stats")) {
                 int gamesPlayed = wins + draws + losses;
                 DecimalFormat decimalFormat = new DecimalFormat();
                 double winPercentage = ((double) wins / gamesPlayed) * 100;
@@ -64,15 +68,14 @@ public class Main {
                 print(" ");
             }
 
-            else {
-                print(userChoice + " is not a registered input choice! Recognised inputs: " + Arrays.asList(RPS.values()));
-            }
+            print(userChoice + " is not a registered input choice! Recognised inputs: " + Arrays.asList(RPS.values()));
 
-    } while(true);
 
-}
+        } while (true);
 
-    private static void print(String s) {
-        System.out.println(s);
+    }
+
+    private static void print(String string) {
+        System.out.println(string);
     }
 }
