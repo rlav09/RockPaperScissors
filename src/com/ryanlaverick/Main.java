@@ -1,9 +1,11 @@
 package com.ryanlaverick;
 
 import com.ryanlaverick.game.GameResult;
+import com.ryanlaverick.game.RPS;
 import com.ryanlaverick.game.RPSGame;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -19,29 +21,24 @@ public class Main {
 
             RPSGame rpsGame = new RPSGame();
 
-            if(rpsGame.isChoice(userChoice)) {
-
+            if (rpsGame.isChoice(userChoice)) {
                 GameResult gameResult = rpsGame.getResult(userChoice);
                 String toPrint = "";
 
-                if(gameResult == GameResult.WIN) {
-                    wins+=1;
+                if (gameResult == GameResult.WIN) {
+                    wins += 1;
                     print(" ");
                     toPrint = "Congratulations! You have won this round of Rock Paper Scissors, you selected " + userChoice + " while the Computer chose " + rpsGame.getGeneratedResult() + "!";
                     print("You have won " + wins + " rounds!");
                     print(" ");
-                }
-
-                else if(gameResult == GameResult.DRAW) {
-                    draws+=1;
+                } else if (gameResult == GameResult.DRAW) {
+                    draws += 1;
                     print(" ");
                     toPrint = "Draw! You have drawn this round of Rock Paper Scissors, you selected " + userChoice + " while the Computer also chose " + rpsGame.getGeneratedResult() + "!";
                     print("You have drawn " + draws + " rounds!");
                     print(" ");
-                }
-
-                else if(gameResult == GameResult.LOSS) {
-                    losses+=1;
+                } else if (gameResult == GameResult.LOSS) {
+                    losses += 1;
                     print(" ");
                     toPrint = "Better luck next time! You have lost this round of Rock Paper Scissors, you selected " + userChoice + " while the Computer chose " + rpsGame.getGeneratedResult() + "!";
                     print("You have lost " + losses + " rounds!");
@@ -50,10 +47,9 @@ public class Main {
 
 
                 print(toPrint);
-
             }
 
-            else if(userChoice.equalsIgnoreCase("stats")) {
+            else if (userChoice.equalsIgnoreCase("stats")) {
                 int gamesPlayed = wins + draws + losses;
                 DecimalFormat decimalFormat = new DecimalFormat();
                 double winPercentage = ((double) wins / gamesPlayed) * 100;
@@ -69,12 +65,12 @@ public class Main {
             }
 
             else {
-                print("Error! " + userChoice + " is not a registered Rock, Paper, Scissors game choice!");
+                print(userChoice + " is not a registered input choice! Recognised inputs: " + Arrays.asList(RPS.values()));
             }
 
-        } while(true);
+    } while(true);
 
-    }
+}
 
     private static void print(String s) {
         System.out.println(s);

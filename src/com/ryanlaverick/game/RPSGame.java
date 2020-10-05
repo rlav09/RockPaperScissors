@@ -15,52 +15,20 @@ public class RPSGame {
     }
 
     public GameResult getResult(String userInput) {
-        RPS user = get(userInput);
+        RPS user = RPS.lookup(userInput);
 
-        if(user != null) {
-
-            if(user.getBeats().equalsIgnoreCase(generatedResult.getLosesTo())) {
-                return GameResult.WIN;
-            }
-
-            else if(user.getDrawsTo().equalsIgnoreCase(generatedResult.getDrawsTo())) {
-                return GameResult.DRAW;
-            }
-
-            else if(user.getLosesTo().equalsIgnoreCase(generatedResult.getBeats())) {
-                return GameResult.LOSS;
-            }
-
+        if (user.getBeats().equalsIgnoreCase(generatedResult.getLosesTo())) {
+            return GameResult.WIN;
+        } else if (user.getDrawsTo().equalsIgnoreCase(generatedResult.getDrawsTo())) {
+            return GameResult.DRAW;
+        } else if (user.getLosesTo().equalsIgnoreCase(generatedResult.getBeats())) {
+            return GameResult.LOSS;
         }
 
-        return null;
+        return GameResult.INPROGRESS;
     }
 
     public boolean isChoice(String userInput) {
-        for(RPS results : RPS.values()) {
-
-            if(userInput.equalsIgnoreCase(results.getName())) {
-                return true;
-            }
-
-        }
-
-        return false;
+        return RPS.isRegistered(userInput);
     }
-
-    public RPS get(String userInput) {
-        for(RPS results : RPS.values()) {
-
-            if(userInput.equalsIgnoreCase(results.getName())) {
-                return results;
-            }
-
-        }
-
-        return null;
-    }
-
-
-
-
 }
