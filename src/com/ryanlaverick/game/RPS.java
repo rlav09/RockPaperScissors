@@ -26,14 +26,7 @@ public enum RPS {
     }
 
     public static RPS lookup(String s) {
-        RPS toReturn = null;
-        if(mapIndex.containsKey(s)) {
-            toReturn = mapIndex.get(s);
-        }
-
-        if(toReturn != null) return toReturn;
-
-        throw new IllegalArgumentException("Value could not be found! Accepted values " + Arrays.asList(values()));
+        return mapIndex.get(s);
     }
 
     public static boolean isRegistered(String s) {
