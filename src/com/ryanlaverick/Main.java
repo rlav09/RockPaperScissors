@@ -23,7 +23,7 @@ public class Main {
 
             if (rpsGame.isChoice(userChoice)) {
                 GameResult gameResult = rpsGame.getResult(userChoice);
-                String toPrint;
+                String toPrint = "";
 
                 if (gameResult == GameResult.WIN) {
                     wins += 1;
